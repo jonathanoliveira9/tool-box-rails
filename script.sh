@@ -1,0 +1,46 @@
+#!/bin/bash
+
+echo "Installing asdf"
+
+sudo apt-get update
+
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+
+git clone https://github.com/excid3/asdf.git ~/.asdf
+
+echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
+
+echo '. "$HOME/.asdf/completions/asdf.bash"' >> ~/.bashrc
+
+echo 'legacy_version_file = yes' >> ~/.asdfrc
+
+echo 'export EDITOR="code --wait"' >> ~/.bashrc
+
+exec $SHELL
+
+asdf plugin add ruby
+
+asdf plugin add nodejs
+
+echo "Do you want to list the versions avaliable? (Y/N)"
+
+read list_versions
+
+
+case $list_versions in
+"Y") asdf list all ruby ;;
+"N") echo ".." ;;
+*) echo "Wrong answer";;
+esac
+
+echo "Which version of Ruby do you want to install?"
+
+read ruby_version
+
+echo "Installing Ruby $ruby_version"
+
+asdf install ruby $ruby_version
+
+asdf global ruby $ruby_version
+
+echo "Ruby $ruby_version has been installed."
