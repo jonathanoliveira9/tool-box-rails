@@ -44,3 +44,41 @@ asdf install ruby $ruby_version
 asdf global ruby $ruby_version
 
 echo "Ruby $ruby_version has been installed."
+
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo "███████╗███████╗████████╗██╗   ██╗██████╗     ██████╗  █████╗ ██╗██╗     ███████╗"
+echo "██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗    ██╔══██╗██╔══██╗██║██║     ██╔════╝"
+echo "███████╗█████╗     ██║   ██║   ██║██████╔╝    ██████╔╝███████║██║██║     ███████╗"
+echo "╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝     ██╔══██╗██╔══██║██║██║     ╚════██║"
+echo "███████║███████╗   ██║   ╚██████╔╝██║         ██║  ██║██║  ██║██║███████╗███████║"
+echo "╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝         ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝"
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+
+echo "Do you want to create the project? (Y/N)"
+
+read create_project
+
+case $create_project in
+"Y") echo "" ;;
+*) echo "Finished";;
+esac
+
+echo "Give a name to project (eg. octopus)"
+
+read project_name
+
+echo "Do you want to use MySQL database?"
+
+read mysql_db
+
+echo "Do you want to use PostgreSQL database?"
+
+read postgres_db
