@@ -1,4 +1,4 @@
-# Tool Box Rails
+# Tool Box Rails - in progress
 
 This project is a tool box to install and configure the basic of Ruby On Rails, sometimes when you need to start a new project is borred to install the basic, like rspec, faker...
 
