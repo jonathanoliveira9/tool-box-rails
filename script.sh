@@ -75,7 +75,25 @@ echo "Give a name to project (eg. octopus)"
 
 read project_name
 
-echo "Do you want to use MySQL database?"
+type_db=""
+echo "Do you want to use MySQL database?(Y/N)"
+read mysql_db
+
+if [ $mysql_db == "Y" ]; then
+  echo "MysQL selected"
+  type_db="mysql"
+else
+  echo "Do you want to use PostgreSQL database(Y/N)?"
+  read postgres_db
+  if [ $postgres_db == "Y" ]; then
+      echo "PostgreSQL selected"
+      type_db="postgresql"
+  else
+    echo "Db not mappead"
+    # raise a error - not implemented
+  fi
+fi
+
 
 read mysql_db
 
