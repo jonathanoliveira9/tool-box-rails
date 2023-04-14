@@ -94,9 +94,31 @@ else
   fi
 fi
 
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo "                                           _                                 _                   "
+echo "                                       _  (_)                               (_)              _   "
+echo "  ____ _____ ____  _____  ____ _____ _| |_ _ ____   ____    ____   ____ ___  _ _____  ____ _| |_ "
+echo " / _  | ___ |  _ \| ___ |/ ___(____ (_   _| |  _ \ / _  |  |  _ \ / ___/ _ \| | ___ |/ ___(_   _)"
+echo "( (_| | ____| | | | ____| |   / ___ | | |_| | | | ( (_| |  | |_| | |  | |_| | | ____( (___  | |_ "
+echo " \___ |_____|_| |_|_____|_|   \_____|  \__|_|_| |_|\___ |  |  __/|_|   \____| |_____)\____)  \__)"
+echo "(_____|                                           (_____|  |_|            (__/                   "
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 
-read mysql_db
+echo "Type the path to install the project"
 
-echo "Do you want to use PostgreSQL database?"
+read path_project
+# Before verify if the database is installed if not raise an error
 
-read postgres_db
+setup_project="cd $path_project/ && rails new $project_name --database=$type_db"
+# Generating project
+eval $setup_project
+
