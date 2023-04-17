@@ -120,7 +120,7 @@ read path_project
 
 setup_project="cd $path_project/ && rails new $project_name --database=$type_db"
 # Generating project
-#eval $setup_project
+eval $setup_project
 
 echo ""
 echo ""
@@ -148,3 +148,5 @@ cat "$file_path/dependencies/rspec/gem"
 echo "Running Bundle"
 
 eval "cd $path_project/$project_name && bundle"
+
+eval "cd $path_project/$project_name && rails generate rspec:install"
