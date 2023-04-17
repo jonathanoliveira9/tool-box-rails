@@ -1,5 +1,6 @@
 #!/bin/bash
 
+file_path=$PWD
 echo "Installing asdf"
 
 sudo apt-get update
@@ -17,7 +18,6 @@ then
 else
   echo 'asdf alread installed'
 fi
-
 
 asdf plugin add ruby
 
@@ -120,5 +120,31 @@ read path_project
 
 setup_project="cd $path_project/ && rails new $project_name --database=$type_db"
 # Generating project
-eval $setup_project
+#eval $setup_project
 
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo "░▀█▀░█▀█░█▀▀░▀█▀░█▀█░█░░░█░░░▀█▀░█▀█░█▀▀░░░█▀▄░█▀▀░█▀█░█▀▀░█▀█░█▀▄░█▀▀░█▀█░█▀▀░▀█▀░█▀▀░█▀▀"
+echo "░░█░░█░█░▀▀█░░█░░█▀█░█░░░█░░░░█░░█░█░█░█░░░█░█░█▀▀░█▀▀░█▀▀░█░█░█░█░█▀▀░█░█░█░░░░█░░█▀▀░▀▀█"
+echo "░▀▀▀░▀░▀░▀▀▀░░▀░░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░░░▀▀░░▀▀▀░▀░░░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀"
+echo ""
+echo ""
+echo ""
+echo ""
+
+echo "Installing RSPEC"
+echo ""
+echo ""
+echo ""
+echo ""
+
+cat "$file_path/dependencies/rspec/gem" >> "$path_project/$project_name/Gemfile"
+cat "$file_path/dependencies/rspec/gem"
+
+echo "Running Bundle"
+
+eval "cd $path_project/$project_name && bundle"
