@@ -165,3 +165,29 @@ cat "$file_path/dependencies/faker/gem" >> "$path_project/$project_name/Gemfile"
 echo "Running Bundle"
 
 eval "cd $path_project/$project_name && bundle"
+
+echo ""
+echo ""
+echo ""
+echo ""
+echo "Installing Factory Bot"
+echo ""
+echo ""
+echo ""
+echo ""
+
+cat "$file_path/dependencies/factory_bot/gem" >> "$path_project/$project_name/Gemfile"
+
+echo "Running Bundle"
+
+eval "cd $path_project/$project_name && bundle"
+
+eval "mkdir $path_project/$project_name/spec/factories"
+
+eval "mkdir $path_project/$project_name/spec/support"
+
+eval "cp $file_path/dependencies/factory_bot/factory_bot.rb $path_project/$project_name/spec/support"
+
+cat "$file_path/dependencies/factory_bot/config" >> "$path_project/$project_name/spec/rails_helper.rb"
+
+
