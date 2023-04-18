@@ -186,8 +186,34 @@ eval "mkdir $path_project/$project_name/spec/factories"
 
 eval "mkdir $path_project/$project_name/spec/support"
 
+echo "Importing Files"
+
 eval "cp $file_path/dependencies/factory_bot/factory_bot.rb $path_project/$project_name/spec/support"
+
+echo "" >> "$path_project/$project_name/spec/rails_helper.rb"
 
 cat "$file_path/dependencies/factory_bot/config" >> "$path_project/$project_name/spec/rails_helper.rb"
 
+echo ""
+echo ""
+echo ""
+echo ""
+echo "Installing Database Cleaner"
+echo ""
+echo ""
+echo ""
+echo ""
 
+cat "$file_path/dependencies/database_cleaner/gem" >> "$path_project/$project_name/Gemfile"
+
+echo "Running Bundle"
+
+eval "cd $path_project/$project_name && bundle"
+
+echo "Importing Files"
+
+eval "cp $file_path/dependencies/database_cleaner/database_cleaner.rb $path_project/$project_name/spec/support"
+
+echo "" >> "$path_project/$project_name/spec/rails_helper.rb"
+
+cat "$file_path/dependencies/database_cleaner/config" >> "$path_project/$project_name/spec/rails_helper.rb"
