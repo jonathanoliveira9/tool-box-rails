@@ -143,10 +143,25 @@ echo ""
 echo ""
 
 cat "$file_path/dependencies/rspec/gem" >> "$path_project/$project_name/Gemfile"
-cat "$file_path/dependencies/rspec/gem"
 
 echo "Running Bundle"
 
 eval "cd $path_project/$project_name && bundle"
 
 eval "cd $path_project/$project_name && rails generate rspec:install"
+
+echo ""
+echo ""
+echo ""
+echo ""
+echo "Installing Faker"
+echo ""
+echo ""
+echo ""
+echo ""
+
+cat "$file_path/dependencies/faker/gem" >> "$path_project/$project_name/Gemfile"
+
+echo "Running Bundle"
+
+eval "cd $path_project/$project_name && bundle"
