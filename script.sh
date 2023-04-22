@@ -217,3 +217,24 @@ eval "cp $file_path/dependencies/database_cleaner/database_cleaner.rb $path_proj
 echo "" >> "$path_project/$project_name/spec/rails_helper.rb"
 
 cat "$file_path/dependencies/database_cleaner/config" >> "$path_project/$project_name/spec/rails_helper.rb"
+
+echo ""
+echo ""
+echo ""
+echo ""
+echo "Configuration Docker"
+echo ""
+echo ""
+echo ""
+echo ""
+
+eval "cp $file_path/dependencies/docker/start-puma $path_project/$project_name/bin"
+
+eval "touch $path_project/$project_name/Dockerfile"
+
+echo "FROM ruby:$ruby_version" >> "$path_project/$project_name/Dockerfile"
+
+echo "" >> "$path_project/$project_name/Dockerfile"
+echo "" >> "$path_project/$project_name/Dockerfile"
+
+cat "$file_path/dependencies/docker/Dockerfile" >> "$path_project/$project_name/Dockerfile"
