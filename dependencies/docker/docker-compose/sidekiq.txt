@@ -1,0 +1,6 @@
+  sidekiq:
+    build .
+    command: bundle exec sidekiq -e development -C config/sidekiq.yml
+    links:
+      - db
+      - redis

@@ -1,0 +1,8 @@
+version: "2.1"
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:

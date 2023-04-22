@@ -1,0 +1,9 @@
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      DB_DATABASE: <%= ENV['DB_DATABASE'] %>
+      DB_USER: <%= ENV['DB_USER'] %>
+      DB_PASSWORD: <%= ENV['DB_PASSWORD'] %>
+    ports:
+      - "3307:3306"
