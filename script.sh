@@ -62,15 +62,6 @@ echo ""
 echo ""
 echo ""
 
-echo "Do you want to create the project? (Y/N)"
-
-read create_project
-
-case $create_project in
-"Y") echo "" ;;
-*) echo "Finished";;
-esac
-
 echo "Give a name to project (eg. octopus)"
 
 read project_name
@@ -113,7 +104,7 @@ echo ""
 echo ""
 echo ""
 
-echo "Type the path to install the project"
+echo "Type the path to install the project (e.g - /home/user/Documents/Projects)"
 
 read path_project
 # Before verify if the database is installed if not raise an error
@@ -235,6 +226,43 @@ eval "touch $path_project/$project_name/Dockerfile"
 echo "FROM ruby:$ruby_version" >> "$path_project/$project_name/Dockerfile"
 
 echo "" >> "$path_project/$project_name/Dockerfile"
-echo "" >> "$path_project/$project_name/Dockerfile"
 
 cat "$file_path/dependencies/docker/Dockerfile" >> "$path_project/$project_name/Dockerfile"
+
+eval "touch $path_project/$project_name/docker-compose.yml"
+
+cat "$file_path/dependencies/docker/docker-compose/app.txt" >> "$path_project/$project_name/docker-compose.yml"
+
+if [ $mysql_db == "Y" ]; then
+  cat "$file_path/dependencies/docker/docker-compose/mysql.txt" >> "$path_project/$project_name/docker-compose.yml"
+else
+  if [ $postgres_db == "Y" ]; then
+      cat "$file_path/dependencies/docker/docker-compose/postgres.txt" >> "$path_project/$project_name/docker-compose.yml"
+  else
+    echo "Db not mappead"
+  fi
+fi
+
+cat "$file_path/dependencies/docker/docker-compose/redis.txt" >> "$path_project/$project_name/docker-compose.yml"
+
+cat "$file_path/dependencies/docker/docker-compose/sidekiq.txt" >> "$path_project/$project_name/docker-compose.yml"
+
+echo "Configuration Figaro Environment"
+
+cat "$file_path/dependencies/figaro/gem" >> "$path_project/$project_name/Gemfile"
+
+eval "cd $path_project/$project_name && bundle"
+
+eval "cp $file_path/dependencies/credentials/application.yml $path_project/$project_name/"
+
+echo "Configuration Sidekiq"
+
+cat "$file_path/dependencies/sidekiq/gem" >> "$path_project/$project_name/Gemfile"
+
+echo "Configuration Redis"
+
+cat "$file_path/dependencies/redis/gem" >> "$path_project/$project_name/Gemfile"
+
+eval "cd $path_project/$project_name && bundle"
+
+# Import a configuration to routes.rb - in progress
