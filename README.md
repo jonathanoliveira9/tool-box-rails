@@ -7,6 +7,7 @@ So, I create a script to install and configure this gems.
 - Rails
 - RSpec
 - Faker
+- Figaro
 - FactoryBot
 - DatabaseCleaner
 - Mysql (optional)
