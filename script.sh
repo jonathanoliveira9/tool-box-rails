@@ -23,16 +23,6 @@ asdf plugin add ruby
 
 asdf plugin add nodejs
 
-echo "Do you want to list the versions avaliable? (Y/N)"
-
-read list_versions
-
-case $list_versions in
-"Y") asdf list all ruby ;;
-"N") echo ".." ;;
-*) echo "Wrong answer";;
-esac
-
 echo "Which version of Ruby do you want to install?"
 
 read ruby_version
@@ -265,4 +255,7 @@ cat "$file_path/dependencies/redis/gem" >> "$path_project/$project_name/Gemfile"
 
 eval "cd $path_project/$project_name && bundle"
 
-# Import a configuration to routes.rb - in progress
+line_number=3
+import_file="${file_path}/dependencies/sidekiq/config"
+
+sed -i "${line_number}r ${import_file}" "$path_project/$project_name/config/routes.rb"
