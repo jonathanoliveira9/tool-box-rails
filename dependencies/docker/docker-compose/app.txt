@@ -1,8 +1,11 @@
 version: "2.1"
-networks:
-  mynetwork:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/24
-
 services:
+  app:
+    container_name: 'app'
+    build: .
+    volumes:
+      - ".:/var/www/app/current"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
