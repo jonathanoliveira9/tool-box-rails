@@ -7,3 +7,5 @@
       DB_PASSWORD: <%= ENV['db_password'] %>
     ports:
       - "3307:3306"
+    networks:
+      - backnet

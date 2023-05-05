@@ -1,4 +1,12 @@
 version: "2.1"
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+  backnet:
+    internal: true
+
 services:
   app:
     container_name: 'app'
