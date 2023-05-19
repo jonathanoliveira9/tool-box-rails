@@ -255,6 +255,8 @@ cat "$file_path/dependencies/redis/gem" >> "$path_project/$project_name/Gemfile"
 
 eval "cd $path_project/$project_name && bundle"
 
+sed  -i '1i require "sidekiq/web"' "$path_project/$project_name/config/routes.rb"
+
 line_number=3
 import_file="${file_path}/dependencies/sidekiq/config"
 
